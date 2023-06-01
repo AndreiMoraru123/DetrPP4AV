@@ -38,15 +38,20 @@ def get_label_info(label_path):
     return image_info, annotations
 
 
-def convert_to_coco_format(label_dir):
+def convert_to_coco_format(label_dir, img_dir):
     images = []
     annotations = []
 
     for idx, label_file in enumerate(os.listdir(label_dir)):
         label_path = os.path.join(label_dir, label_file)
+        # Ensure that the corresponding image file exists in img_dir
+        if not os.path.exists(os.path.join(img_dir, os.path.splitext(label_file)[0] + ".png")):
+            continue
 
         image_info, annos = get_label_info(label_path)
         image_info["id"] = idx
+        # Include only the filename, not the path
+        image_info["file_name"] = os.path.splitext(label_file)[0] + ".png"
         images.append(image_info)
 
         for anno in annos:
@@ -62,9 +67,19 @@ def convert_to_coco_format(label_dir):
         ]
     }
 
-    with open("coco_format.json", "w") as f:
+    # Write to separate JSON files for train and val
+    with open(os.path.join(img_dir, f"coco_format_{os.path.basename(img_dir)}.json"), "w") as f:
         json.dump(coco_format_json, f)
 
 
 if __name__ == "__main__":
-    convert_to_coco_format(r"D:\LicensePlates\annotations")
+    annotations_dir = r"D:\LicensePlates\annotations"
+    train_img_dir = r"D:\LicensePlates\images\train"
+    val_img_dir = r"D:\LicensePlates\images\val"
+
+    convert_to_coco_format(annotations_dir, train_img_dir)
+    convert_to_coco_format(annotations_dir, val_img_dir)
+
+
+
+
