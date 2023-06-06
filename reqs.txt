@@ -1,0 +1,5 @@
+timm
+pycocotools
+scipy
+pytorch-lightning
+transformers
