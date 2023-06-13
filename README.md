@@ -6,11 +6,26 @@
 ![output4](https://github.com/AndreiMoraru123/DetrPP4AV/assets/81184255/2e997620-6627-420b-b80a-5e751a40d52e)
 ![output5](https://github.com/AndreiMoraru123/DetrPP4AV/assets/81184255/29161b1a-56d8-4d7e-bab6-3ef5b9a5e17a)
 
+### Dataset
+
 ```bib
 @article{PP4AV2022,
   title = {PP4AV: A benchmarking Dataset for Privacy-preserving Autonomous Driving},
   author = {Linh Trinh, Phuong Pham, Hoang Trinh, Nguyen Bach, Dung Nguyen, Giang Nguyen, Huy Nguyen},
   booktitle = {IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
   year = {2023}
+}
+```
+
+### Model
+
+```bib
+@misc{carion2020endtoend,
+      title={End-to-End Object Detection with Transformers}, 
+      author={Nicolas Carion and Francisco Massa and Gabriel Synnaeve and Nicolas Usunier and Alexander Kirillov and Sergey Zagoruyko},
+      year={2020},
+      eprint={2005.12872},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 ```
